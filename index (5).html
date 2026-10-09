@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security Bot - בוט אבטחה לדיסקורד</title>
+<meta name="description" content="בוט אבטחה מלא לדיסקורד: אנטי-ניוק, אנטי-ריידים, שער כניסה, הסגר, אוטומוד, אימות, וולקם ומודרציה.">
+<style>
+:root{--bg:#0b0d14;--card:#141826;--line:#252b3f;--text:#e8eaf3;--muted:#98a0b8;--accent:#5865f2;--accent2:#7c8bff;--ok:#3ddc97}
+*{box-sizing:border-box;margin:0}
+body{background:radial-gradient(900px 500px at 50% -120px,#1d2350 0,transparent 70%),var(--bg);color:var(--text);
+font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.logo{font-weight:800;font-size:20px;display:flex;align-items:center;gap:10px}
+.logo i{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-style:normal}
+.btn{display:inline-block;padding:12px 26px;border-radius:12px;font-weight:700;border:1px solid var(--line);transition:.2s}
+.btn.main{background:linear-gradient(135deg,var(--accent),var(--accent2));border:0;box-shadow:0 8px 28px #5865f255}
+.btn:hover{transform:translateY(-2px)}
+.hero{text-align:center;padding:70px 0 50px}
+.badge{display:inline-block;padding:5px 14px;border-radius:99px;background:#5865f222;color:var(--accent2);font-size:13px;margin-bottom:18px}
+h1{font-size:clamp(34px,6vw,60px);line-height:1.15;margin-bottom:16px}
+h1 span{background:linear-gradient(90deg,var(--accent2),var(--ok));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:18px;max-width:640px;margin:0 auto 30px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 26px}
+.stat b{display:block;font-size:26px;color:var(--accent2)}
+.stat small{color:var(--muted)}
+section{padding:46px 0}
+h2{font-size:30px;margin-bottom:8px}
+.sub{color:var(--muted);margin-bottom:28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;transition:.2s}
+.card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.card .ic{font-size:28px;margin-bottom:10px}
+.card h3{font-size:18px;margin-bottom:6px}
+.card p{color:var(--muted);font-size:14.5px}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:700}
+.cmds{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;direction:ltr;justify-content:flex-end}
+code{background:#0b0d14;border:1px solid var(--line);border-radius:8px;padding:3px 10px;font-size:13.5px;color:var(--accent2)}
+.steps{counter-reset:s;display:grid;gap:12px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px 16px 20px;display:flex;gap:16px;align-items:flex-start}
+.step::before{counter-increment:s;content:counter(s);flex:none;width:34px;height:34px;border-radius:50%;background:var(--accent);display:grid;place-items:center;font-weight:800}
+.step b{display:block}
+.step span{color:var(--muted);font-size:14.5px}
+.final{text-align:center;background:linear-gradient(135deg,#5865f233,#3ddc9722);border:1px solid var(--line);border-radius:22px;padding:46px 20px}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:34px 0 50px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="logo"><i>🛡️</i> Security Bot</div>
+    <a class="btn main" href="#" data-invite>הוסף לשרת</a>
+  </nav>
+
+  <header class="hero">
+    <span class="badge">🔒 הגנה מלאה לשרת הדיסקורד שלך</span>
+    <h1>הגנה שלא <span>נשברת</span><br>גם מול ניוק וריידים</h1>
+    <p>אנטי-ניוק עם שחזור אוטומטי, שער כניסה, הסגר, אוטומוד מתקדם, אימות, וולקם מעוצב ומודרציה עם תיקים. הכל בפקודות סלאש ובעברית.</p>
+    <div class="cta">
+      <a class="btn main" href="#" data-invite>➕ הוסף את הבוט לשרת שלך</a>
+      <a class="btn" href="#commands">📖 כל הפקודות</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>10+</b><small>מערכות הגנה</small></div>
+      <div class="stat"><b>60+</b><small>פקודות סלאש</small></div>
+      <div class="stat"><b>24/7</b><small>הגנה אוטומטית</small></div>
+    </div>
+  </header>
+
+  <section id="features">
+    <h2>מה הבוט עושה</h2>
+    <p class="sub">כל מה ששרת צריך כדי להישאר בטוח, במקום אחד.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">🛡️</div><h3>אנטי-ניוק</h3><p>מזהה מחיקות ויצירות המוניות, חוסם את התוקף ומשחזר חדרים ורולים אוטומטית. כולל חסימת בוטים לא מורשים ומחיקת טמפלייטים.</p></div>
+      <div class="card"><div class="ic">🚨</div><h3>אנטי-ריידים</h3><p>מזהה הצפת כניסות, מעלה זמנית את רמת האימות ויכול לנעול את השרת עד שהסכנה חולפת.</p></div>
+      <div class="card"><div class="ic">🚪</div><h3>שער כניסה</h3><p>ניקוד חשבונות חשודים לפי גיל, שם ותמונת פרופיל. מי שבלי תמונה נכנס אוטומטית להסגר.</p></div>
+      <div class="card"><div class="ic">🔒</div><h3>הסגר במקום באן</h3><p>מסיר רולים, מגביל לחדר ערעורים, ומחזיר הכל בלחיצה כשהצוות משחרר.</p></div>
+      <div class="card"><div class="ic">🧹</div><h3>אוטומוד מתקדם</h3><p>מילים אסורות בעברית, ספאם, CAPS, אימוג'ים, הודעות כפולות, קישורי הזמנה ותיוגים המוניים, עם פטור לפי חדר או רול.</p></div>
+      <div class="card"><div class="ic">✅</div><h3>אימות</h3><p>פאנל אימות בכפתור או בקאפצ'ה עם רקע ותיאור לבחירתך, והגנה מחשבונות חדשים.</p></div>
+      <div class="card"><div class="ic">👋</div><h3>וולקם מעוצב</h3><p>כרטיס תמונה עם רקע, צבעים, מסגרת, כפתורי קישור, הודעה פרטית ורול אוטומטי. הכל מפאנל אחד בעברית.</p></div>
+      <div class="card"><div class="ic">📚</div><h3>מודרציה ותיקים</h3><p>באן, קיק, טיימאאוט ואזהרות עם בדיקות היררכיה, והיסטוריה מלאה לכל משתמש.</p></div>
+      <div class="card"><div class="ic">📜</div><h3>לוגים וסריקת אבטחה</h3><p>לוגים לכל אירוע חשוב, ו-/scan שנותן ציון אבטחה והמלצות לשיפור.</p></div>
+    </div>
+  </section>
+
+  <section id="commands">
+    <h2>פקודות</h2>
+    <p class="sub">הכל בפקודות סלאש. הקלד / בדיסקורד כדי לראות את הכל.</p>
+    <details open><summary>🛡️ הגנה</summary><div class="cmds"><code>/antinuke status</code><code>/antinuke toggle</code><code>/antinuke allowbot</code><code>/antiraid config</code><code>/antiraid status</code><code>/lockdown</code><code>/unlockdown</code><code>/scan</code></div></details>
+    <details><summary>🚪 כניסה והסגר</summary><div class="cmds"><code>/joingate config</code><code>/joingate check</code><code>/joingate allow</code><code>/quarantine setup</code><code>/quarantine add</code><code>/quarantine release</code><code>/verify setup</code><code>/welcome</code></div></details>
+    <details><summary>🧹 אוטומוד</summary><div class="cmds"><code>/automod status</code><code>/automod toggle</code><code>/automod limits</code><code>/automod badword_add</code><code>/automod badword_preset</code><code>/automod exempt_channel</code><code>/automod exempt_role</code></div></details>
+    <details><summary>🔨 מודרציה ותיקים</summary><div class="cmds"><code>/ban</code><code>/kick</code><code>/timeout</code><code>/warn</code><code>/history</code><code>/note</code><code>/case view</code><code>/lock</code><code>/clear</code><code>/slowmode</code></div></details>
+    <details><summary>⚙️ הגדרות</summary><div class="cmds"><code>/setlog</code><code>/whitelist add</code><code>/logs toggle</code><code>/help</code></div></details>
+  </section>
+
+  <section id="start">
+    <h2>איך מתחילים</h2>
+    <p class="sub">ארבעה צעדים והשרת מוגן.</p>
+    <div class="steps">
+      <div class="step"><div><b>מוסיפים את הבוט לשרת</b><span>לוחצים על "הוסף לשרת" ובוחרים את השרת שלך. צריך הרשאת ניהול שרת.</span></div></div>
+      <div class="step"><div><b>מעלים את הרול של הבוט לראש</b><span>בהגדרות השרת ← רולים, גוררים את הרול של הבוט מעל כל שאר הרולים. בלי זה הוא לא יוכל להעניש או לשחזר.</span></div></div>
+      <div class="step"><div><b>קובעים חדר לוגים</b><span>הפקודה <code>/setlog</code> ובחירת חדר צוות. שם יגיעו כל ההתראות.</span></div></div>
+      <div class="step"><div><b>בודקים את השרת</b><span>הפקודה <code>/scan</code> נותנת ציון אבטחה ואומרת מה לתקן.</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="final">
+      <h2>מוכן להגן על השרת?</h2>
+      <p class="sub">ההתקנה לוקחת פחות מדקה.</p>
+      <a class="btn main" href="#" data-invite>➕ הוסף את הבוט עכשיו</a>
+    </div>
+  </section>
+
+  <footer>Security Bot © <span id="y"></span> • נבנה עם discord.py</footer>
+</div>
+
+<script>
+// ⚠️ שנה כאן ל-Application ID של הבוט שלך (Developer Portal ← General Information ← Application ID)
+const CLIENT_ID = "1557899239814733864";
+// הרשאות: 8 = Administrator. להרשאות מצומצמות אפשר לחשב ב-OAuth2 ← URL Generator
+const PERMISSIONS = "8";
+const INVITE = "https://discord.com/oauth2/authorize?client_id=" + CLIENT_ID +
+  "&permissions=" + PERMISSIONS + "&scope=bot%20applications.commands";
+document.querySelectorAll("[data-invite]").forEach(a => { a.href = INVITE; a.target = "_blank"; a.rel = "noopener"; });
+document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
