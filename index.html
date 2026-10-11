@@ -13,6 +13,7 @@ font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.6}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
 nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.nav-actions{display:flex;gap:10px;align-items:center}
 .logo{font-weight:800;font-size:20px;display:flex;align-items:center;gap:10px}
 .logo i{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-style:normal}
 .btn{display:inline-block;padding:12px 26px;border-radius:12px;font-weight:700;border:1px solid var(--line);transition:.2s}
@@ -48,13 +49,26 @@ code{background:#0b0d14;border:1px solid var(--line);border-radius:8px;padding:3
 .step span{color:var(--muted);font-size:14.5px}
 .final{text-align:center;background:linear-gradient(135deg,#5865f233,#3ddc9722);border:1px solid var(--line);border-radius:22px;padding:46px 20px}
 footer{text-align:center;color:var(--muted);font-size:13px;padding:34px 0 50px}
+.premium{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.plan{background:linear-gradient(160deg,#5865f233,var(--card) 60%);border:1px solid var(--accent);border-radius:20px;padding:28px}
+.plan .price{font-size:44px;font-weight:800;line-height:1.1;margin:10px 0 2px}
+.plan .price small{font-size:16px;font-weight:500;color:var(--muted)}
+.plan ul{list-style:none;padding:0;margin:18px 0 24px;display:grid;gap:10px}
+.plan li{padding-right:26px;position:relative}
+.plan li::before{content:"✓";position:absolute;right:0;color:var(--ok);font-weight:800}
+.plan .note{color:var(--muted);font-size:13px;margin-top:12px}
+.step span a{color:var(--accent2)}
+@media(max-width:760px){.premium{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <nav>
     <div class="logo"><i>🛡️</i> Security Bot</div>
-    <a class="btn main" href="#" data-invite>הוסף לשרת</a>
+    <div class="nav-actions">
+      <a class="btn" href="#premium">💎 פרימיום</a>
+      <a class="btn main" href="#" data-invite>הוסף לשרת</a>
+    </div>
   </nav>
 
   <header class="hero">
@@ -63,6 +77,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:34px 0 50px}
     <p>אנטי-ניוק עם שחזור אוטומטי, שער כניסה, הסגר, אוטומוד מתקדם, אימות, וולקם מעוצב ומודרציה עם תיקים. הכל בפקודות סלאש ובעברית.</p>
     <div class="cta">
       <a class="btn main" href="#" data-invite>➕ הוסף את הבוט לשרת שלך</a>
+      <a class="btn" href="#premium">💎 קבל פרימיום</a>
       <a class="btn" href="#commands">📖 כל הפקודות</a>
     </div>
     <div class="stats">
@@ -95,7 +110,33 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:34px 0 50px}
     <details><summary>🚪 כניסה והסגר</summary><div class="cmds"><code>/joingate config</code><code>/joingate check</code><code>/joingate allow</code><code>/quarantine setup</code><code>/quarantine add</code><code>/quarantine release</code><code>/verify setup</code><code>/welcome</code></div></details>
     <details><summary>🧹 אוטומוד</summary><div class="cmds"><code>/automod status</code><code>/automod toggle</code><code>/automod limits</code><code>/automod badword_add</code><code>/automod badword_preset</code><code>/automod exempt_channel</code><code>/automod exempt_role</code></div></details>
     <details><summary>🔨 מודרציה ותיקים</summary><div class="cmds"><code>/ban</code><code>/kick</code><code>/timeout</code><code>/warn</code><code>/history</code><code>/note</code><code>/case view</code><code>/lock</code><code>/clear</code><code>/slowmode</code></div></details>
+    <details><summary>💎 פרימיום: טיקטים</summary><div class="cmds"><code>/tickets setup</code><code>/tickets config</code><code>/tickets panel</code><code>/tickets topic_add</code><code>/tickets stats</code><code>/tickets close</code></div></details>
     <details><summary>⚙️ הגדרות</summary><div class="cmds"><code>/setlog</code><code>/whitelist add</code><code>/logs toggle</code><code>/help</code></div></details>
+  </section>
+
+  <section id="premium">
+    <h2>💎 פרימיום</h2>
+    <p class="sub">מערכת הטיקטים המתקדמת וכל פיצ'רי הפרימיום, במנוי חודשי אחד.</p>
+    <div class="premium">
+      <div class="plan">
+        <b>מנוי פרימיום</b>
+        <div class="price">כ-30 ₪ <small>/ חודש</small></div>
+        <ul>
+          <li>מערכת טיקטים: פאנל, נושאים, טרנסקריפט HTML ודירוג בכוכבים</li>
+          <li>חסימות עם תפוגה, סגירה אוטומטית וסטטיסטיקות</li>
+          <li>לוח הגדרות בדיסקורד ותמונת רקע משלכם</li>
+          <li>כל פיצ'ר פרימיום שייוסף בעתיד</li>
+        </ul>
+        <a class="btn main" href="#" data-patreon>💎 הצטרפו ב-Patreon</a>
+        <p class="note">התשלום והחיוב החודשי מתבצעים ב-Patreon, ואפשר לבטל בכל רגע. האתר הזה לא רואה ולא שומר פרטי תשלום.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div><b>מצטרפים למנוי</b><span>לוחצים על הכפתור, בוחרים את המנוי ומשלמים ב-Patreon.</span></div></div>
+        <div class="step"><div><b>מחברים את הדיסקורד</b><span>ב-Patreon נכנסים להגדרות ← Apps ← Discord ומתחברים עם החשבון של בעל השרת שבו הבוט. הרול חייב להיות אצל בעל השרת.</span></div></div>
+        <div class="step"><div><b>מצטרפים לשרת התמיכה</b><span>צריך להיות חבר בשרת שלנו כדי לקבל את הרול. <a href="#" data-support>הצטרפות לשרת</a></span></div></div>
+        <div class="step"><div><b>הרול מתקבל אוטומטית</b><span>אחרי התשלום מקבלים את רול הפרימיום ופקודות הטיקטים נפתחות בשרת שלכם.</span></div></div>
+      </div>
+    </div>
   </section>
 
   <section id="start">
@@ -121,13 +162,18 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:34px 0 50px}
 </div>
 
 <script>
-// ⚠️ שנה כאן ל-Application ID של הבוט שלך (Developer Portal ← General Information ← Application ID)
+// Application ID של הבוט (Developer Portal ← General Information)
 const CLIENT_ID = "1557899239814733864";
 // הרשאות: 8 = Administrator. להרשאות מצומצמות אפשר לחשב ב-OAuth2 ← URL Generator
 const PERMISSIONS = "8";
 const INVITE = "https://discord.com/oauth2/authorize?client_id=" + CLIENT_ID +
   "&permissions=" + PERMISSIONS + "&scope=bot%20applications.commands";
-document.querySelectorAll("[data-invite]").forEach(a => { a.href = INVITE; a.target = "_blank"; a.rel = "noopener"; });
+const PATREON_URL = "https://www.patreon.com/cw/shieldguardbotsecuritybot";
+const SUPPORT_INVITE = "https://discord.gg/YjHkkwr5dD";
+function link(sel, url){ document.querySelectorAll(sel).forEach(a => { a.href = url; a.target = "_blank"; a.rel = "noopener"; }); }
+link("[data-invite]", INVITE);
+link("[data-patreon]", PATREON_URL);
+link("[data-support]", SUPPORT_INVITE);
 document.getElementById("y").textContent = new Date().getFullYear();
 </script>
 </body>
