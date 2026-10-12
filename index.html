@@ -3,178 +3,269 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
 <title>Security Bot - בוט אבטחה לדיסקורד</title>
 <meta name="description" content="בוט אבטחה מלא לדיסקורד: אנטי-ניוק, אנטי-ריידים, שער כניסה, הסגר, אוטומוד, אימות, וולקם ומודרציה.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0b0d14;--card:#141826;--line:#252b3f;--text:#e8eaf3;--muted:#98a0b8;--accent:#5865f2;--accent2:#7c8bff;--ok:#3ddc97}
+:root{--bg:#070912;--glass:#12162acc;--card:#12162aaa;--g2:#ffffff0d;--line:#ffffff1a;--text:#eef0fb;--muted:#9aa2bf;--accent:#6c7bff;--accent2:#b06cff;--ok:#35e0a1;--shadow:#0006;--aur:.33;--navbg:#0b0e1ccc}
+[data-theme=light]{--bg:#eef1fb;--glass:#ffffffcc;--card:#ffffffcc;--g2:#0000000a;--line:#00000016;--text:#171a2b;--muted:#586079;--accent:#4f5df0;--accent2:#9b52f0;--ok:#0f9d6b;--shadow:#4a56a722;--aur:.2;--navbg:#ffffffdd}
 *{box-sizing:border-box;margin:0}
-body{background:radial-gradient(900px 500px at 50% -120px,#1d2350 0,transparent 70%),var(--bg);color:var(--text);
-font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.6}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--bg);color:var(--text);font-family:Heebo,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.65}
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
-.nav-actions{display:flex;gap:10px;align-items:center}
-.logo{font-weight:800;font-size:20px;display:flex;align-items:center;gap:10px}
-.logo i{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-style:normal}
-.btn{display:inline-block;padding:12px 26px;border-radius:12px;font-weight:700;border:1px solid var(--line);transition:.2s}
-.btn.main{background:linear-gradient(135deg,var(--accent),var(--accent2));border:0;box-shadow:0 8px 28px #5865f255}
-.btn:hover{transform:translateY(-2px)}
-.hero{text-align:center;padding:70px 0 50px}
-.badge{display:inline-block;padding:5px 14px;border-radius:99px;background:#5865f222;color:var(--accent2);font-size:13px;margin-bottom:18px}
-h1{font-size:clamp(34px,6vw,60px);line-height:1.15;margin-bottom:16px}
-h1 span{background:linear-gradient(90deg,var(--accent2),var(--ok));-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{color:var(--muted);font-size:18px;max-width:640px;margin:0 auto 30px}
+.aurora{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.aurora i{position:absolute;width:55vw;height:55vw;border-radius:50%;filter:blur(90px);opacity:var(--aur);animation:fl 22s ease-in-out infinite alternate}
+.aurora i:nth-child(1){background:#4b5cff;top:-20vw;inset-inline-end:-10vw}
+.aurora i:nth-child(2){background:#b06cff;bottom:-25vw;inset-inline-start:-10vw;animation-delay:-8s}
+.aurora i:nth-child(3){background:#12d6a0;width:30vw;height:30vw;top:38vh;left:35vw;opacity:calc(var(--aur)/2);animation-delay:-14s}
+.aurora::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--g2) 1px,transparent 1px),linear-gradient(90deg,var(--g2) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:radial-gradient(ellipse at 50% 20%,#000 20%,transparent 70%);mask-image:radial-gradient(ellipse at 50% 20%,#000 20%,transparent 70%)}
+@keyframes fl{to{transform:translate(6vw,5vh) scale(1.15)}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:20px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 18px 44px var(--shadow)}
+header.nav{position:sticky;top:12px;z-index:20;margin:12px auto 0;max-width:1120px;padding:0 20px}
+.navin{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:var(--navbg);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 10px 30px var(--shadow)}
+.logo{font-weight:800;font-size:19px;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.logo i{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-style:normal;box-shadow:0 0 24px #6c7bff77}
+.links{display:flex;gap:4px}.links a{padding:6px 12px;border-radius:10px;color:var(--muted);font-weight:600;font-size:14.5px}.links a:hover{color:var(--text);background:var(--g2)}
+.acts{display:flex;gap:8px;align-items:center}
+.btn,button{font:inherit;color:inherit;cursor:pointer;display:inline-block;padding:11px 24px;border-radius:13px;font-weight:700;border:1px solid var(--line);background:var(--g2);transition:.2s;white-space:nowrap}
+.btn:hover,button:hover{transform:translateY(-2px);border-color:var(--accent)}
+.btn.main{background:linear-gradient(135deg,var(--accent),var(--accent2));border:0;color:#fff;box-shadow:0 10px 30px #6c7bff55}.btn.main:hover{filter:brightness(1.1)}
+.btn.sm,button.sm{padding:7px 13px;font-size:14px;border-radius:11px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hero{text-align:center;padding:84px 0 56px;animation:rise .7s both}
+.badge{display:inline-block;padding:6px 16px;border-radius:99px;background:#6c7bff22;color:var(--accent);font-size:13.5px;font-weight:600;margin-bottom:20px;border:1px solid #6c7bff44}
+h1{font-size:clamp(34px,6vw,64px);line-height:1.12;margin-bottom:18px;font-weight:800;letter-spacing:-1px}
+h1 span{background:linear-gradient(90deg,var(--accent),var(--ok));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:18.5px;max-width:660px;margin:0 auto 32px}
 .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:40px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 26px}
-.stat b{display:block;font-size:26px;color:var(--accent2)}
-.stat small{color:var(--muted)}
-section{padding:46px 0}
-h2{font-size:30px;margin-bottom:8px}
-.sub{color:var(--muted);margin-bottom:28px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;transition:.2s}
-.card:hover{border-color:var(--accent);transform:translateY(-3px)}
-.card .ic{font-size:28px;margin-bottom:10px}
-.card h3{font-size:18px;margin-bottom:6px}
-.card p{color:var(--muted);font-size:14.5px}
-details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:10px}
-summary{cursor:pointer;font-weight:700}
-.cmds{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;direction:ltr;justify-content:flex-end}
-code{background:#0b0d14;border:1px solid var(--line);border-radius:8px;padding:3px 10px;font-size:13.5px;color:var(--accent2)}
+.stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:44px}
+.stat{padding:16px 30px;border-radius:18px}.stat b{display:block;font-size:30px;font-weight:800;background:linear-gradient(135deg,var(--text),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}.stat small{color:var(--muted)}
+section{padding:52px 0}
+h2{font-size:clamp(26px,4vw,34px);margin-bottom:8px;font-weight:800}
+.sub{color:var(--muted);margin-bottom:30px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.card{padding:24px;border-radius:20px;transition:.25s}.card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.card .ic{font-size:30px;margin-bottom:12px;width:54px;height:54px;border-radius:16px;background:linear-gradient(135deg,#6c7bff33,#b06cff22);display:grid;place-items:center}
+.card h3{font-size:18px;margin-bottom:6px}.card p{color:var(--muted);font-size:14.5px}
+details{padding:16px 20px;margin-bottom:10px;border-radius:16px}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center}summary::-webkit-details-marker{display:none}summary::after{content:"+";color:var(--accent);font-size:22px;line-height:1}details[open] summary::after{content:"–"}
+.cmds{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;direction:ltr;justify-content:flex-start}
+[dir=rtl] .cmds{justify-content:flex-end}
+code{background:var(--g2);border:1px solid var(--line);border-radius:9px;padding:3px 11px;font-size:13.5px;color:var(--accent);direction:ltr;display:inline-block}
 .steps{counter-reset:s;display:grid;gap:12px}
-.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px 16px 20px;display:flex;gap:16px;align-items:flex-start}
-.step::before{counter-increment:s;content:counter(s);flex:none;width:34px;height:34px;border-radius:50%;background:var(--accent);display:grid;place-items:center;font-weight:800}
-.step b{display:block}
-.step span{color:var(--muted);font-size:14.5px}
-.final{text-align:center;background:linear-gradient(135deg,#5865f233,#3ddc9722);border:1px solid var(--line);border-radius:22px;padding:46px 20px}
-footer{text-align:center;color:var(--muted);font-size:13px;padding:34px 0 50px}
+.step{padding:16px 20px;border-radius:16px;display:flex;gap:16px;align-items:flex-start}
+.step::before{counter-increment:s;content:counter(s);flex:none;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;display:grid;place-items:center;font-weight:800}
+.step b{display:block}.step span{color:var(--muted);font-size:14.5px}.step span a{color:var(--accent);font-weight:600}
 .premium{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.plan{background:linear-gradient(160deg,#5865f233,var(--card) 60%);border:1px solid var(--accent);border-radius:20px;padding:28px}
-.plan .price{font-size:44px;font-weight:800;line-height:1.1;margin:10px 0 2px}
-.plan .price small{font-size:16px;font-weight:500;color:var(--muted)}
+.plan{background:linear-gradient(160deg,#6c7bff30,var(--glass) 60%);border:1px solid var(--accent);border-radius:22px;padding:30px;box-shadow:0 18px 50px #6c7bff33}
+.plan .price{font-size:46px;font-weight:800;line-height:1.1;margin:10px 0 2px}.plan .price small{font-size:16px;font-weight:500;color:var(--muted)}
 .plan ul{list-style:none;padding:0;margin:18px 0 24px;display:grid;gap:10px}
-.plan li{padding-right:26px;position:relative}
-.plan li::before{content:"✓";position:absolute;right:0;color:var(--ok);font-weight:800}
+.plan li{padding-inline-start:28px;position:relative}.plan li::before{content:"✓";position:absolute;inset-inline-start:0;color:var(--ok);font-weight:800}
 .plan .note{color:var(--muted);font-size:13px;margin-top:12px}
-.step span a{color:var(--accent2)}
-@media(max-width:760px){.premium{grid-template-columns:1fr}}
+.final{text-align:center;background:linear-gradient(135deg,#6c7bff33,#35e0a122),var(--glass);border:1px solid var(--line);border-radius:26px;padding:52px 20px;box-shadow:0 18px 50px var(--shadow)}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:34px 0 50px}
+@media(max-width:860px){.links{display:none}.premium{grid-template-columns:1fr}.hero{padding:56px 0 40px}.navin{padding:8px 10px}.acts .btn.dash{display:none}}
+@media(max-width:480px){.logo span{display:none}.btn.main{padding:9px 14px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <nav>
-    <div class="logo"><i>🛡️</i> Security Bot</div>
-    <div class="nav-actions">
-      <a class="btn" href="#premium">💎 פרימיום</a>
-      <a class="btn main" href="#" data-invite>הוסף לשרת</a>
+<div class="aurora"><i></i><i></i><i></i></div>
+<header class="nav">
+  <div class="navin">
+    <a class="logo" href="#top"><i>🛡️</i><span>Security Bot</span></a>
+    <nav class="links" aria-label="Main">
+      <a href="#features" data-i="nFeat"></a><a href="#commands" data-i="nCmd"></a><a href="#premium" data-i="nPrem"></a><a href="#start" data-i="nStart"></a>
+    </nav>
+    <div class="acts">
+      <button class="sm" id="bl" aria-label="Language">EN</button>
+      <button class="sm" id="bt" aria-label="Theme">🌓</button>
+      <a class="btn sm dash" href="#" data-panel data-i="nPanel"></a>
+      <a class="btn main sm" href="#" data-invite data-i="nAdd"></a>
     </div>
-  </nav>
+  </div>
+</header>
 
+<div class="wrap" id="top">
   <header class="hero">
-    <span class="badge">🔒 הגנה מלאה לשרת הדיסקורד שלך</span>
-    <h1>הגנה שלא <span>נשברת</span><br>גם מול ניוק וריידים</h1>
-    <p>אנטי-ניוק עם שחזור אוטומטי, שער כניסה, הסגר, אוטומוד מתקדם, אימות, וולקם מעוצב ומודרציה עם תיקים. הכל בפקודות סלאש ובעברית.</p>
+    <span class="badge" data-i="badge"></span>
+    <h1><span data-i="h1a"></span><br><span style="background:none;-webkit-text-fill-color:currentColor;color:var(--text)" data-i="h1b"></span></h1>
+    <p data-i="heroP"></p>
     <div class="cta">
-      <a class="btn main" href="#" data-invite>➕ הוסף את הבוט לשרת שלך</a>
-      <a class="btn" href="#premium">💎 קבל פרימיום</a>
-      <a class="btn" href="#commands">📖 כל הפקודות</a>
+      <a class="btn main" href="#" data-invite data-i="ctaAdd"></a>
+      <a class="btn" href="#premium" data-i="ctaPrem"></a>
+      <a class="btn" href="#commands" data-i="ctaCmd"></a>
     </div>
     <div class="stats">
-      <div class="stat"><b>10+</b><small>מערכות הגנה</small></div>
-      <div class="stat"><b>60+</b><small>פקודות סלאש</small></div>
-      <div class="stat"><b>24/7</b><small>הגנה אוטומטית</small></div>
+      <div class="stat glass"><b>10+</b><small data-i="st1"></small></div>
+      <div class="stat glass"><b>60+</b><small data-i="st2"></small></div>
+      <div class="stat glass"><b>24/7</b><small data-i="st3"></small></div>
     </div>
   </header>
 
   <section id="features">
-    <h2>מה הבוט עושה</h2>
-    <p class="sub">כל מה ששרת צריך כדי להישאר בטוח, במקום אחד.</p>
+    <h2 data-i="fTitle"></h2><p class="sub" data-i="fSub"></p>
     <div class="grid">
-      <div class="card"><div class="ic">🛡️</div><h3>אנטי-ניוק</h3><p>מזהה מחיקות ויצירות המוניות, חוסם את התוקף ומשחזר חדרים ורולים אוטומטית. כולל חסימת בוטים לא מורשים ומחיקת טמפלייטים.</p></div>
-      <div class="card"><div class="ic">🚨</div><h3>אנטי-ריידים</h3><p>מזהה הצפת כניסות, מעלה זמנית את רמת האימות ויכול לנעול את השרת עד שהסכנה חולפת.</p></div>
-      <div class="card"><div class="ic">🚪</div><h3>שער כניסה</h3><p>ניקוד חשבונות חשודים לפי גיל, שם ותמונת פרופיל. מי שבלי תמונה נכנס אוטומטית להסגר.</p></div>
-      <div class="card"><div class="ic">🔒</div><h3>הסגר במקום באן</h3><p>מסיר רולים, מגביל לחדר ערעורים, ומחזיר הכל בלחיצה כשהצוות משחרר.</p></div>
-      <div class="card"><div class="ic">🧹</div><h3>אוטומוד מתקדם</h3><p>מילים אסורות בעברית, ספאם, CAPS, אימוג'ים, הודעות כפולות, קישורי הזמנה ותיוגים המוניים, עם פטור לפי חדר או רול.</p></div>
-      <div class="card"><div class="ic">✅</div><h3>אימות</h3><p>פאנל אימות בכפתור או בקאפצ'ה עם רקע ותיאור לבחירתך, והגנה מחשבונות חדשים.</p></div>
-      <div class="card"><div class="ic">👋</div><h3>וולקם מעוצב</h3><p>כרטיס תמונה עם רקע, צבעים, מסגרת, כפתורי קישור, הודעה פרטית ורול אוטומטי. הכל מפאנל אחד בעברית.</p></div>
-      <div class="card"><div class="ic">📚</div><h3>מודרציה ותיקים</h3><p>באן, קיק, טיימאאוט ואזהרות עם בדיקות היררכיה, והיסטוריה מלאה לכל משתמש.</p></div>
-      <div class="card"><div class="ic">📜</div><h3>לוגים וסריקת אבטחה</h3><p>לוגים לכל אירוע חשוב, ו-/scan שנותן ציון אבטחה והמלצות לשיפור.</p></div>
+      <div class="card glass"><div class="ic">🛡️</div><h3 data-i="f1t"></h3><p data-i="f1p"></p></div>
+      <div class="card glass"><div class="ic">🚨</div><h3 data-i="f2t"></h3><p data-i="f2p"></p></div>
+      <div class="card glass"><div class="ic">🚪</div><h3 data-i="f3t"></h3><p data-i="f3p"></p></div>
+      <div class="card glass"><div class="ic">🔒</div><h3 data-i="f4t"></h3><p data-i="f4p"></p></div>
+      <div class="card glass"><div class="ic">🧹</div><h3 data-i="f5t"></h3><p data-i="f5p"></p></div>
+      <div class="card glass"><div class="ic">✅</div><h3 data-i="f6t"></h3><p data-i="f6p"></p></div>
+      <div class="card glass"><div class="ic">👋</div><h3 data-i="f7t"></h3><p data-i="f7p"></p></div>
+      <div class="card glass"><div class="ic">📚</div><h3 data-i="f8t"></h3><p data-i="f8p"></p></div>
+      <div class="card glass"><div class="ic">📜</div><h3 data-i="f9t"></h3><p data-i="f9p"></p></div>
     </div>
   </section>
 
   <section id="commands">
-    <h2>פקודות</h2>
-    <p class="sub">הכל בפקודות סלאש. הקלד / בדיסקורד כדי לראות את הכל.</p>
-    <details open><summary>🛡️ הגנה</summary><div class="cmds"><code>/antinuke status</code><code>/antinuke toggle</code><code>/antinuke allowbot</code><code>/antiraid config</code><code>/antiraid status</code><code>/lockdown</code><code>/unlockdown</code><code>/scan</code></div></details>
-    <details><summary>🚪 כניסה והסגר</summary><div class="cmds"><code>/joingate config</code><code>/joingate check</code><code>/joingate allow</code><code>/quarantine setup</code><code>/quarantine add</code><code>/quarantine release</code><code>/verify setup</code><code>/welcome</code></div></details>
-    <details><summary>🧹 אוטומוד</summary><div class="cmds"><code>/automod status</code><code>/automod toggle</code><code>/automod limits</code><code>/automod badword_add</code><code>/automod badword_preset</code><code>/automod exempt_channel</code><code>/automod exempt_role</code></div></details>
-    <details><summary>🔨 מודרציה ותיקים</summary><div class="cmds"><code>/ban</code><code>/kick</code><code>/timeout</code><code>/warn</code><code>/history</code><code>/note</code><code>/case view</code><code>/lock</code><code>/clear</code><code>/slowmode</code></div></details>
-    <details><summary>💎 פרימיום: טיקטים</summary><div class="cmds"><code>/tickets setup</code><code>/tickets config</code><code>/tickets panel</code><code>/tickets topic_add</code><code>/tickets stats</code><code>/tickets close</code></div></details>
-    <details><summary>⚙️ הגדרות</summary><div class="cmds"><code>/setlog</code><code>/whitelist add</code><code>/logs toggle</code><code>/help</code></div></details>
+    <h2 data-i="cTitle"></h2><p class="sub" data-i="cSub"></p>
+    <details class="glass" open><summary data-i="c1"></summary><div class="cmds"><code>/antinuke status</code><code>/antinuke toggle</code><code>/antinuke allowbot</code><code>/antiraid config</code><code>/antiraid status</code><code>/lockdown</code><code>/unlockdown</code><code>/scan</code></div></details>
+    <details class="glass"><summary data-i="c2"></summary><div class="cmds"><code>/joingate config</code><code>/joingate check</code><code>/joingate allow</code><code>/quarantine setup</code><code>/quarantine add</code><code>/quarantine release</code><code>/verify setup</code><code>/welcome</code></div></details>
+    <details class="glass"><summary data-i="c3"></summary><div class="cmds"><code>/automod status</code><code>/automod toggle</code><code>/automod limits</code><code>/automod badword_add</code><code>/automod badword_preset</code><code>/automod exempt_channel</code><code>/automod exempt_role</code></div></details>
+    <details class="glass"><summary data-i="c4"></summary><div class="cmds"><code>/ban</code><code>/kick</code><code>/timeout</code><code>/warn</code><code>/history</code><code>/note</code><code>/case view</code><code>/lock</code><code>/clear</code><code>/slowmode</code></div></details>
+    <details class="glass"><summary data-i="c5"></summary><div class="cmds"><code>/tickets setup</code><code>/tickets config</code><code>/tickets panel</code><code>/tickets topic_add</code><code>/tickets stats</code><code>/tickets close</code></div></details>
+    <details class="glass"><summary data-i="c6"></summary><div class="cmds"><code>/setlog</code><code>/whitelist add</code><code>/logs toggle</code><code>/help</code></div></details>
   </section>
 
   <section id="premium">
-    <h2>💎 פרימיום</h2>
-    <p class="sub">מערכת הטיקטים המתקדמת וכל פיצ'רי הפרימיום, במנוי חודשי אחד.</p>
+    <h2 data-i="pTitle"></h2><p class="sub" data-i="pSub"></p>
     <div class="premium">
       <div class="plan">
-        <b>מנוי פרימיום</b>
-        <div class="price">כ-30 ₪ <small>/ חודש</small></div>
-        <ul>
-          <li>מערכת טיקטים: פאנל, נושאים, טרנסקריפט HTML ודירוג בכוכבים</li>
-          <li>חסימות עם תפוגה, סגירה אוטומטית וסטטיסטיקות</li>
-          <li>לוח הגדרות בדיסקורד ותמונת רקע משלכם</li>
-          <li>כל פיצ'ר פרימיום שייוסף בעתיד</li>
-        </ul>
-        <a class="btn main" href="#" data-patreon>💎 הצטרפו ב-Patreon</a>
-        <p class="note">התשלום והחיוב החודשי מתבצעים ב-Patreon, ואפשר לבטל בכל רגע. האתר הזה לא רואה ולא שומר פרטי תשלום.</p>
+        <b data-i="pPlan"></b>
+        <div class="price"><span data-i="pPrice"></span> <small data-i="pMonth"></small></div>
+        <ul><li data-i="pl1"></li><li data-i="pl2"></li><li data-i="pl3"></li><li data-i="pl4"></li></ul>
+        <a class="btn main" href="#" data-patreon data-i="pJoin"></a>
+        <p class="note" data-i="pNote"></p>
       </div>
       <div class="steps">
-        <div class="step"><div><b>מצטרפים למנוי</b><span>לוחצים על הכפתור, בוחרים את המנוי ומשלמים ב-Patreon.</span></div></div>
-        <div class="step"><div><b>מחברים את הדיסקורד</b><span>ב-Patreon נכנסים להגדרות ← Apps ← Discord ומתחברים עם החשבון של בעל השרת שבו הבוט. הרול חייב להיות אצל בעל השרת.</span></div></div>
-        <div class="step"><div><b>מצטרפים לשרת התמיכה</b><span>צריך להיות חבר בשרת שלנו כדי לקבל את הרול. <a href="#" data-support>הצטרפות לשרת</a></span></div></div>
-        <div class="step"><div><b>הרול מתקבל אוטומטית</b><span>אחרי התשלום מקבלים את רול הפרימיום ופקודות הטיקטים נפתחות בשרת שלכם.</span></div></div>
+        <div class="step glass"><div><b data-i="ps1t"></b><span data-i="ps1p"></span></div></div>
+        <div class="step glass"><div><b data-i="ps2t"></b><span data-i="ps2p"></span></div></div>
+        <div class="step glass"><div><b data-i="ps3t"></b><span data-h="ps3p"></span></div></div>
+        <div class="step glass"><div><b data-i="ps4t"></b><span data-i="ps4p"></span></div></div>
       </div>
     </div>
   </section>
 
   <section id="start">
-    <h2>איך מתחילים</h2>
-    <p class="sub">ארבעה צעדים והשרת מוגן.</p>
+    <h2 data-i="sTitle"></h2><p class="sub" data-i="sSub"></p>
     <div class="steps">
-      <div class="step"><div><b>מוסיפים את הבוט לשרת</b><span>לוחצים על "הוסף לשרת" ובוחרים את השרת שלך. צריך הרשאת ניהול שרת.</span></div></div>
-      <div class="step"><div><b>מעלים את הרול של הבוט לראש</b><span>בהגדרות השרת ← רולים, גוררים את הרול של הבוט מעל כל שאר הרולים. בלי זה הוא לא יוכל להעניש או לשחזר.</span></div></div>
-      <div class="step"><div><b>קובעים חדר לוגים</b><span>הפקודה <code>/setlog</code> ובחירת חדר צוות. שם יגיעו כל ההתראות.</span></div></div>
-      <div class="step"><div><b>בודקים את השרת</b><span>הפקודה <code>/scan</code> נותנת ציון אבטחה ואומרת מה לתקן.</span></div></div>
+      <div class="step glass"><div><b data-i="s1t"></b><span data-i="s1p"></span></div></div>
+      <div class="step glass"><div><b data-i="s2t"></b><span data-i="s2p"></span></div></div>
+      <div class="step glass"><div><b data-i="s3t"></b><span data-h="s3p"></span></div></div>
+      <div class="step glass"><div><b data-i="s4t"></b><span data-h="s4p"></span></div></div>
     </div>
   </section>
 
   <section>
     <div class="final">
-      <h2>מוכן להגן על השרת?</h2>
-      <p class="sub">ההתקנה לוקחת פחות מדקה.</p>
-      <a class="btn main" href="#" data-invite>➕ הוסף את הבוט עכשיו</a>
+      <h2 data-i="endT"></h2><p class="sub" data-i="endS"></p>
+      <a class="btn main" href="#" data-invite data-i="endBtn"></a>
     </div>
   </section>
 
-  <footer>Security Bot © <span id="y"></span> • נבנה עם discord.py</footer>
+  <footer><span data-i="foot"></span> © <span id="y"></span></footer>
 </div>
 
 <script>
+"use strict";
 // Application ID של הבוט (Developer Portal ← General Information)
 const CLIENT_ID = "1557899239814733864";
 // הרשאות: 8 = Administrator. להרשאות מצומצמות אפשר לחשב ב-OAuth2 ← URL Generator
 const PERMISSIONS = "8";
-const INVITE = "https://discord.com/oauth2/authorize?client_id=" + CLIENT_ID +
-  "&permissions=" + PERMISSIONS + "&scope=bot%20applications.commands";
+const INVITE = "https://discord.com/oauth2/authorize?client_id=" + CLIENT_ID + "&permissions=" + PERMISSIONS + "&scope=bot%20applications.commands";
 const PATREON_URL = "https://www.patreon.com/16938508/join";
 const SUPPORT_INVITE = "https://discord.gg/YjHkkwr5dD";
-function link(sel, url){ document.querySelectorAll(sel).forEach(a => { a.href = url; a.target = "_blank"; a.rel = "noopener"; }); }
-link("[data-invite]", INVITE);
-link("[data-patreon]", PATREON_URL);
-link("[data-support]", SUPPORT_INVITE);
+const PANEL_URL = "https://shield-guard-client.vercel.app";   // פאנל הלקוחות
+
+const I18N = {
+  he: {
+    title: "Security Bot - בוט אבטחה לדיסקורד", desc: "בוט אבטחה מלא לדיסקורד: אנטי-ניוק, אנטי-ריידים, שער כניסה, הסגר, אוטומוד, אימות, וולקם ומודרציה.",
+    nFeat: "יכולות", nCmd: "פקודות", nPrem: "פרימיום", nStart: "איך מתחילים", nPanel: "פאנל ניהול", nAdd: "הוסף לשרת",
+    badge: "🔒 הגנה מלאה לשרת הדיסקורד שלך", h1a: "הגנה שלא נשברת", h1b: "גם מול ניוק וריידים",
+    heroP: "אנטי-ניוק עם שחזור אוטומטי, שער כניסה, הסגר, אוטומוד מתקדם, אימות, וולקם מעוצב ומודרציה עם תיקים. הכל בפקודות סלאש ובעברית.",
+    ctaAdd: "➕ הוסף את הבוט לשרת שלך", ctaPrem: "💎 קבל פרימיום", ctaCmd: "📖 כל הפקודות", st1: "מערכות הגנה", st2: "פקודות סלאש", st3: "הגנה אוטומטית",
+    fTitle: "מה הבוט עושה", fSub: "כל מה ששרת צריך כדי להישאר בטוח, במקום אחד.",
+    f1t: "אנטי-ניוק", f1p: "מזהה מחיקות ויצירות המוניות, חוסם את התוקף ומשחזר חדרים ורולים אוטומטית. כולל חסימת בוטים לא מורשים ומחיקת טמפלייטים.",
+    f2t: "אנטי-ריידים", f2p: "מזהה הצפת כניסות, מעלה זמנית את רמת האימות ויכול לנעול את השרת עד שהסכנה חולפת.",
+    f3t: "שער כניסה", f3p: "ניקוד חשבונות חשודים לפי גיל, שם ותמונת פרופיל. מי שבלי תמונה נכנס אוטומטית להסגר.",
+    f4t: "הסגר במקום באן", f4p: "מסיר רולים, מגביל לחדר ערעורים, ומחזיר הכל בלחיצה כשהצוות משחרר.",
+    f5t: "אוטומוד מתקדם", f5p: "מילים אסורות בעברית, ספאם, CAPS, אימוג'ים, הודעות כפולות, קישורי הזמנה ותיוגים המוניים, עם פטור לפי חדר או רול.",
+    f6t: "אימות", f6p: "פאנל אימות בכפתור או בקאפצ'ה עם רקע ותיאור לבחירתך, והגנה מחשבונות חדשים.",
+    f7t: "וולקם מעוצב", f7p: "כרטיס תמונה עם רקע, צבעים, מסגרת, כפתורי קישור, הודעה פרטית ורול אוטומטי. הכל מפאנל אחד בעברית.",
+    f8t: "מודרציה ותיקים", f8p: "באן, קיק, טיימאאוט ואזהרות עם בדיקות היררכיה, והיסטוריה מלאה לכל משתמש.",
+    f9t: "לוגים וסריקת אבטחה", f9p: "לוגים לכל אירוע חשוב, ו-/scan שנותן ציון אבטחה והמלצות לשיפור.",
+    cTitle: "פקודות", cSub: "הכל בפקודות סלאש. הקלד / בדיסקורד כדי לראות את הכל.",
+    c1: "🛡️ הגנה", c2: "🚪 כניסה והסגר", c3: "🧹 אוטומוד", c4: "🔨 מודרציה ותיקים", c5: "💎 פרימיום: טיקטים", c6: "⚙️ הגדרות",
+    pTitle: "💎 פרימיום", pSub: "מערכת הטיקטים המתקדמת וכל פיצ'רי הפרימיום, במנוי חודשי אחד.", pPlan: "מנוי פרימיום", pPrice: "כ-30 ₪", pMonth: "/ חודש",
+    pl1: "מערכת טיקטים: פאנל, נושאים, טרנסקריפט HTML ודירוג בכוכבים", pl2: "חסימות עם תפוגה, סגירה אוטומטית וסטטיסטיקות", pl3: "לוח הגדרות בדיסקורד ותמונת רקע משלכם", pl4: "כל פיצ'ר פרימיום שייוסף בעתיד",
+    pJoin: "💎 הצטרפו ב-Patreon", pNote: "התשלום והחיוב החודשי מתבצעים ב-Patreon, ואפשר לבטל בכל רגע. האתר הזה לא רואה ולא שומר פרטי תשלום.",
+    ps1t: "מצטרפים למנוי", ps1p: "לוחצים על הכפתור, בוחרים את המנוי ומשלמים ב-Patreon.",
+    ps2t: "מחברים את הדיסקורד", ps2p: "ב-Patreon נכנסים להגדרות ← Apps ← Discord ומתחברים עם החשבון של בעל השרת שבו הבוט. הרול חייב להיות אצל בעל השרת.",
+    ps3t: "מצטרפים לשרת התמיכה", ps3p: "צריך להיות חבר בשרת שלנו כדי לקבל את הרול. <a href=\"#\" data-support>הצטרפות לשרת</a>",
+    ps4t: "הרול מתקבל אוטומטית", ps4p: "אחרי התשלום מקבלים את רול הפרימיום ופקודות הטיקטים נפתחות בשרת שלכם.",
+    sTitle: "איך מתחילים", sSub: "ארבעה צעדים והשרת מוגן.",
+    s1t: "מוסיפים את הבוט לשרת", s1p: "לוחצים על \"הוסף לשרת\" ובוחרים את השרת שלך. צריך הרשאת ניהול שרת.",
+    s2t: "מעלים את הרול של הבוט לראש", s2p: "בהגדרות השרת ← רולים, גוררים את הרול של הבוט מעל כל שאר הרולים. בלי זה הוא לא יוכל להעניש או לשחזר.",
+    s3t: "קובעים חדר לוגים", s3p: "הפקודה <code>/setlog</code> ובחירת חדר צוות. שם יגיעו כל ההתראות.",
+    s4t: "בודקים את השרת", s4p: "הפקודה <code>/scan</code> נותנת ציון אבטחה ואומרת מה לתקן.",
+    endT: "מוכן להגן על השרת?", endS: "ההתקנה לוקחת פחות מדקה.", endBtn: "➕ הוסף את הבוט עכשיו", foot: "Security Bot • נבנה עם discord.py"
+  },
+  en: {
+    title: "Security Bot - Discord security bot", desc: "A complete Discord security bot: anti-nuke, anti-raid, join gate, quarantine, automod, verification, welcome cards and moderation.",
+    nFeat: "Features", nCmd: "Commands", nPrem: "Premium", nStart: "Get started", nPanel: "Dashboard", nAdd: "Add to server",
+    badge: "🔒 Complete protection for your Discord server", h1a: "Protection that doesn't break", h1b: "even against nukes and raids",
+    heroP: "Anti-nuke with automatic restore, join gate, quarantine, advanced automod, verification, beautiful welcome cards and moderation with case files. All with slash commands.",
+    ctaAdd: "➕ Add the bot to your server", ctaPrem: "💎 Get Premium", ctaCmd: "📖 All commands", st1: "Protection systems", st2: "Slash commands", st3: "Automatic protection",
+    fTitle: "What the bot does", fSub: "Everything a server needs to stay safe, in one place.",
+    f1t: "Anti-Nuke", f1p: "Detects mass deletions and creations, blocks the attacker and restores channels and roles automatically. Includes unauthorized-bot blocking and template deletion.",
+    f2t: "Anti-Raid", f2p: "Detects join floods, temporarily raises the verification level and can lock the server until the danger passes.",
+    f3t: "Join Gate", f3p: "Scores suspicious accounts by age, name and avatar. Accounts without an avatar go straight to quarantine.",
+    f4t: "Quarantine instead of ban", f4p: "Strips roles, limits the user to an appeals channel, and restores everything in one click when staff release them.",
+    f5t: "Advanced AutoMod", f5p: "Banned words, spam, CAPS, emojis, duplicate messages, invite links and mass mentions, with exemptions per channel or role.",
+    f6t: "Verification", f6p: "A button or captcha verification panel with your own background and description, plus protection from brand-new accounts.",
+    f7t: "Designed welcome cards", f7p: "An image card with background, colors, border, link buttons, a private message and an auto-role. All from a single panel.",
+    f8t: "Moderation & case files", f8p: "Ban, kick, timeout and warnings with hierarchy checks, and a full history for every user.",
+    f9t: "Logs & security scan", f9p: "Logs for every important event, and /scan which gives a security score with improvement tips.",
+    cTitle: "Commands", cSub: "Everything is a slash command. Type / in Discord to see them all.",
+    c1: "🛡️ Protection", c2: "🚪 Entry & quarantine", c3: "🧹 AutoMod", c4: "🔨 Moderation & cases", c5: "💎 Premium: tickets", c6: "⚙️ Settings",
+    pTitle: "💎 Premium", pSub: "The advanced ticket system and every Premium feature, in one monthly subscription.", pPlan: "Premium subscription", pPrice: "≈ ₪30", pMonth: "/ month",
+    pl1: "Ticket system: panel, topics, HTML transcripts and star ratings", pl2: "Expiring blocks, auto-close and statistics", pl3: "A settings dashboard in Discord and your own background image", pl4: "Every Premium feature added in the future",
+    pJoin: "💎 Join on Patreon", pNote: "Payment and monthly billing are handled by Patreon and you can cancel any time. This site never sees or stores payment details.",
+    ps1t: "Join the subscription", ps1p: "Press the button, pick the tier and pay on Patreon.",
+    ps2t: "Connect your Discord", ps2p: "On Patreon open Settings → Apps → Discord and connect with the account of the owner of the server the bot is in. The role must be held by the server owner.",
+    ps3t: "Join the support server", ps3p: "You must be a member of our server to receive the role. <a href=\"#\" data-support>Join the server</a>",
+    ps4t: "The role arrives automatically", ps4p: "After payment you receive the Premium role and the ticket commands unlock in your server.",
+    sTitle: "Get started", sSub: "Four steps and your server is protected.",
+    s1t: "Add the bot to your server", s1p: "Press \"Add to server\" and choose your server. You need the Manage Server permission.",
+    s2t: "Move the bot's role to the top", s2p: "In Server Settings → Roles, drag the bot's role above all other roles. Without this it can't punish or restore.",
+    s3t: "Set a log channel", s3p: "Use the <code>/setlog</code> command and pick a staff channel. All alerts will arrive there.",
+    s4t: "Check your server", s4p: "The <code>/scan</code> command gives a security score and tells you what to fix.",
+    endT: "Ready to protect your server?", endS: "Setup takes less than a minute.", endBtn: "➕ Add the bot now", foot: "Security Bot • built with discord.py"
+  }
+};
+const store = {get: k => { try { return localStorage.getItem(k); } catch { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch {} }};
+let lang = store.get("sg_lang") || ((navigator.language || "he").toLowerCase().startsWith("he") ? "he" : "en");
+if (!I18N[lang]) lang = "he";
+let theme = store.get("sg_theme") || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+function link(sel, url) { document.querySelectorAll(sel).forEach(a => { a.href = url; a.target = "_blank"; a.rel = "noopener"; }); }
+function apply() {
+  const d = document.documentElement, T = I18N[lang];
+  d.lang = lang; d.dir = lang === "he" ? "rtl" : "ltr"; d.dataset.theme = theme;
+  document.title = T.title; document.querySelector('meta[name=description]').content = T.desc;
+  document.querySelectorAll("[data-i]").forEach(e => e.textContent = T[e.dataset.i] ?? e.textContent);
+  document.querySelectorAll("[data-h]").forEach(e => e.innerHTML = T[e.dataset.h] ?? e.innerHTML);   // טקסטים סטטיים מהקובץ הזה בלבד
+  document.getElementById("bl").textContent = lang === "he" ? "EN" : "עב";
+  link("[data-invite]", INVITE); link("[data-patreon]", PATREON_URL); link("[data-support]", SUPPORT_INVITE); link("[data-panel]", PANEL_URL);
+}
+document.getElementById("bl").onclick = () => { lang = lang === "he" ? "en" : "he"; store.set("sg_lang", lang); apply(); };
+document.getElementById("bt").onclick = () => { theme = theme === "dark" ? "light" : "dark"; store.set("sg_theme", theme); apply(); };
 document.getElementById("y").textContent = new Date().getFullYear();
+apply();
 </script>
 </body>
 </html>
