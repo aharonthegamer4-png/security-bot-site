@@ -6,42 +6,58 @@
 <meta name="referrer" content="no-referrer">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Shield Guard · דמו לקריאה בלבד</title>
+<title>Shield Guard · דמו (שעה)</title>
 <style>
-:root{--bg:#0b0e1c;--card:#141935;--line:#ffffff1a;--text:#eef0fb;--muted:#9aa2bf;--accent:#6c7bff;--ok:#35e0a1;--warn:#ffb020;--bad:#ff5d7a}
+:root{--bg:#070912;--card:#12162a;--line:#ffffff1a;--text:#eef0fb;--muted:#8f97b5;--ac:#6c7bff;--ac2:#b06cff;--ok:#35e0a1;--warn:#ffc857;--bad:#ff5d73;--inp:#0a0d1a}
 *{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--text);font-family:system-ui,"Segoe UI",Arial,sans-serif;line-height:1.5}
-.top{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;border-bottom:1px solid var(--line);gap:12px;flex-wrap:wrap}
-.brand{font-weight:800;font-size:18px}
-.demo{background:#ffb02022;color:var(--warn);border:1px solid #ffb02055;padding:6px 12px;border-radius:99px;font-size:13px;font-weight:700}
-.wrap{max-width:1100px;margin:0 auto;padding:22px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
-.card h3{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:6px}
-.card b{font-size:30px;font-weight:800}
-.score{color:var(--ok)}
-h2{font-size:20px;margin:26px 0 12px}
-.row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14.5px}
-.row:last-child{border-bottom:0}
-.t{color:var(--muted);font-variant-numeric:tabular-nums;direction:ltr;min-width:48px}
-.tag{font-size:12px;padding:2px 9px;border-radius:99px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
-.sw{width:42px;height:24px;border-radius:99px;background:#ffffff22;position:relative;flex:none}
-.sw::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.2s}
-.sw.on{background:var(--ok)}.sw.on::after{inset-inline-start:21px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:760px){.two{grid-template-columns:1fr}}
-button{font:inherit;color:inherit;background:#ffffff0d;border:1px solid var(--line);padding:6px 12px;border-radius:10px;cursor:not-allowed;opacity:.7}
-#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#000c;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;transition:.25s;pointer-events:none}
+body{background:var(--bg);color:var(--text);font-family:system-ui,"Segoe UI",Arial,sans-serif;line-height:1.5;min-height:100vh}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.brand{font-weight:800;font-size:17px}
+.badge{padding:6px 12px;border-radius:99px;font-size:13px;font-weight:700;background:#ffc85722;color:var(--warn);border:1px solid #ffc85755}
+.wrap{display:grid;grid-template-columns:220px 1fr;gap:16px;max-width:1150px;margin:0 auto;padding:16px}
+@media(max-width:800px){.wrap{grid-template-columns:1fr}}
+nav{display:grid;gap:4px;align-content:start;position:sticky;top:10px;height:fit-content}
+nav button{text-align:start;background:none;border:1px solid transparent;color:var(--text);padding:9px 12px;border-radius:12px;font:inherit;cursor:pointer}
+nav button:hover{background:#ffffff0d}nav button.on{background:linear-gradient(135deg,#6c7bff55,#b06cff33);border-color:#6c7bff77}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px}
+h1{font-size:20px;margin-bottom:12px}h2{font-size:15px;margin:12px 0 8px}
+.fld{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.fld:last-child{border-bottom:0}
+.fld>div:first-child{flex:1;min-width:200px}.fld small{color:var(--muted);display:block;font-size:12px}
+input,select,textarea{background:var(--inp);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:7px 10px;font:inherit;min-width:120px}
+textarea{width:100%;min-height:70px}
+input[type=checkbox]{width:42px;height:24px;min-width:0;accent-color:var(--ok)}
+.btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+button.act{font:inherit;color:var(--text);background:#ffffff0d;border:1px solid var(--line);padding:7px 14px;border-radius:10px;cursor:pointer}
+button.act:hover{border-color:var(--ac)}
+.muted{color:var(--muted);font-size:13px}
+.ev{padding:7px 0;border-bottom:1px solid var(--line);font-size:14px;display:flex;gap:10px}.ev:last-child{border:0}
+.t{color:var(--muted);direction:ltr;min-width:46px}
+#timer{font-variant-numeric:tabular-nums;direction:ltr}
+#lock{position:fixed;inset:0;background:#070912f2;display:none;place-items:center;text-align:center;padding:20px;z-index:9}
+#lock.show{display:grid}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#000d;color:#fff;padding:9px 16px;border-radius:12px;font-size:14px;opacity:0;transition:.25s;pointer-events:none}
 #toast.show{opacity:1}
-#err{padding:40px;text-align:center;color:var(--bad)}
 </style>
 </head>
 <body>
 <div class="top">
-  <div class="brand">🛡️ Shield Guard</div>
-  <div class="demo">מצב דמו · נתונים לדוגמה · לקריאה בלבד</div>
+  <div class="brand">🛡️ Shield Guard · דמו</div>
+  <div class="badge">מצב דמו · הכול מקומי ולא משפיע על בוט אמיתי · נשאר <span id="timer">--:--</span></div>
 </div>
-<div class="wrap" id="app"><div id="err" hidden>לא ניתן לטעון את הדמו.</div></div>
+<div class="wrap">
+  <nav id="nav"></nav>
+  <main>
+    <div class="card" id="server"></div>
+    <div class="card" id="mod"></div>
+    <div class="card" id="evs"><h2>אירועים אחרונים</h2><div id="evl"></div></div>
+    <div class="btns"><button class="act" id="reset">איפוס לדמו</button></div>
+  </main>
+</div>
+<div id="lock"><div class="card" style="max-width:420px">
+  <h1>תוקף הדמו הסתיים</h1>
+  <p class="muted">הדמו זמין לשעה אחת בלבד. לשאלות ולהתקנה אמיתית פנו אלינו.</p>
+</div></div>
 <div id="toast"></div>
 <script src="data.js"></script>
 <script src="app.js"></script>
