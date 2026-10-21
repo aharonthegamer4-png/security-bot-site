@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shield Guard · דמו לקריאה בלבד</title>
+<style>
+:root{--bg:#0b0e1c;--card:#141935;--line:#ffffff1a;--text:#eef0fb;--muted:#9aa2bf;--accent:#6c7bff;--ok:#35e0a1;--warn:#ffb020;--bad:#ff5d7a}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--text);font-family:system-ui,"Segoe UI",Arial,sans-serif;line-height:1.5}
+.top{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;border-bottom:1px solid var(--line);gap:12px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:18px}
+.demo{background:#ffb02022;color:var(--warn);border:1px solid #ffb02055;padding:6px 12px;border-radius:99px;font-size:13px;font-weight:700}
+.wrap{max-width:1100px;margin:0 auto;padding:22px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.card h3{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:6px}
+.card b{font-size:30px;font-weight:800}
+.score{color:var(--ok)}
+h2{font-size:20px;margin:26px 0 12px}
+.row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.row:last-child{border-bottom:0}
+.t{color:var(--muted);font-variant-numeric:tabular-nums;direction:ltr;min-width:48px}
+.tag{font-size:12px;padding:2px 9px;border-radius:99px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.sw{width:42px;height:24px;border-radius:99px;background:#ffffff22;position:relative;flex:none}
+.sw::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:.2s}
+.sw.on{background:var(--ok)}.sw.on::after{inset-inline-start:21px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+button{font:inherit;color:inherit;background:#ffffff0d;border:1px solid var(--line);padding:6px 12px;border-radius:10px;cursor:not-allowed;opacity:.7}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#000c;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;opacity:0;transition:.25s;pointer-events:none}
+#toast.show{opacity:1}
+#err{padding:40px;text-align:center;color:var(--bad)}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="brand">🛡️ Shield Guard</div>
+  <div class="demo">מצב דמו · נתונים לדוגמה · לקריאה בלבד</div>
+</div>
+<div class="wrap" id="app"><div id="err" hidden>לא ניתן לטעון את הדמו.</div></div>
+<div id="toast"></div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

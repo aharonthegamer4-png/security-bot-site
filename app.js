@@ -11,7 +11,7 @@ const PANEL_URL = "https://shield-guard-client.vercel.app";   // פאנל הלק
 const I18N = {
   he: {
     title: "Security Bot - בוט אבטחה לדיסקורד", desc: "בוט אבטחה מלא לדיסקורד: אנטי-ניוק, אנטי-ריידים, שער כניסה, הסגר, אוטומוד, אימות, וולקם ומודרציה.",
-    nFeat: "יכולות", nCmd: "פקודות", nPrem: "פרימיום", nStart: "איך מתחילים", nPanel: "פאנל ניהול", nAdd: "הוסף לשרת",
+    nFeat: "יכולות", nPrev: "הצצה לפאנל",nCmd: "פקודות", nPrem: "פרימיום", nStart: "איך מתחילים", nPanel: "פאנל ניהול", nAdd: "הוסף לשרת",
     badge: "🔒 הגנה מלאה לשרת הדיסקורד שלך", h1a: "הגנה שלא נשברת", h1b: "גם מול ניוק וריידים",
     heroP: "אנטי-ניוק עם שחזור אוטומטי, שער כניסה, הסגר, אוטומוד מתקדם, אימות, וולקם מעוצב ומודרציה עם תיקים. הכל בפקודות סלאש ובעברית.",
     ctaAdd: "➕ הוסף את הבוט לשרת שלך", ctaPrem: "💎 קבל פרימיום", ctaCmd: "📖 כל הפקודות", st1: "מערכות הגנה", st2: "פקודות סלאש", st3: "הגנה אוטומטית",
@@ -25,6 +25,7 @@ const I18N = {
     f7t: "וולקם מעוצב", f7p: "כרטיס תמונה עם רקע, צבעים, מסגרת, כפתורי קישור, הודעה פרטית ורול אוטומטי. הכל מפאנל אחד בעברית.",
     f8t: "מודרציה ותיקים", f8p: "באן, קיק, טיימאאוט ואזהרות עם בדיקות היררכיה, והיסטוריה מלאה לכל משתמש.",
     f9t: "לוגים וסריקת אבטחה", f9p: "לוגים לכל אירוע חשוב, ו-/scan שנותן ציון אבטחה והמלצות לשיפור.",
+    prTitle: "הצצה לפאנל", prSub: "ככה נראה הפאנל מבפנים, לפני שמתחילים.", pr1: "סקירה כללית", pr2: "אוטומוד", pr3: "טיקטים", prBtn: "🖥️ פתיחת הפאנל", prDemo: "👀 צפייה בדמו",
     cTitle: "פקודות", cSub: "הכל בפקודות סלאש. הקלד / בדיסקורד כדי לראות את הכל.",
     c1: "🛡️ הגנה", c2: "🚪 כניסה והסגר", c3: "🧹 אוטומוד", c4: "🔨 מודרציה ותיקים", c5: "💎 פרימיום: טיקטים", c6: "⚙️ הגדרות",
     pTitle: "💎 פרימיום", pSub: "מערכת הטיקטים המתקדמת וכל פיצ'רי הפרימיום, במנוי חודשי אחד.", pPlan: "מנוי פרימיום", pPrice: "כ-30 ₪", pMonth: "/ חודש",
@@ -43,7 +44,7 @@ const I18N = {
   },
   en: {
     title: "Security Bot - Discord security bot", desc: "A complete Discord security bot: anti-nuke, anti-raid, join gate, quarantine, automod, verification, welcome cards and moderation.",
-    nFeat: "Features", nCmd: "Commands", nPrem: "Premium", nStart: "Get started", nPanel: "Dashboard", nAdd: "Add to server",
+    nFeat: "Features", nPrev: "Dashboard preview",nCmd: "Commands", nPrem: "Premium", nStart: "Get started", nPanel: "Dashboard", nAdd: "Add to server",
     badge: "🔒 Complete protection for your Discord server", h1a: "Protection that doesn't break", h1b: "even against nukes and raids",
     heroP: "Anti-nuke with automatic restore, join gate, quarantine, advanced automod, verification, beautiful welcome cards and moderation with case files. All with slash commands.",
     ctaAdd: "➕ Add the bot to your server", ctaPrem: "💎 Get Premium", ctaCmd: "📖 All commands", st1: "Protection systems", st2: "Slash commands", st3: "Automatic protection",
@@ -57,6 +58,7 @@ const I18N = {
     f7t: "Designed welcome cards", f7p: "An image card with background, colors, border, link buttons, a private message and an auto-role. All from a single panel.",
     f8t: "Moderation & case files", f8p: "Ban, kick, timeout and warnings with hierarchy checks, and a full history for every user.",
     f9t: "Logs & security scan", f9p: "Logs for every important event, and /scan which gives a security score with improvement tips.",
+    prTitle: "Take a look at the dashboard", prSub: "Here's what the dashboard looks like inside, before you start.", pr1: "Overview", pr2: "AutoMod", pr3: "Tickets", prBtn: "🖥️ Open the dashboard", prDemo: "👀 View demo",
     cTitle: "Commands", cSub: "Everything is a slash command. Type / in Discord to see them all.",
     c1: "🛡️ Protection", c2: "🚪 Entry & quarantine", c3: "🧹 AutoMod", c4: "🔨 Moderation & cases", c5: "💎 Premium: tickets", c6: "⚙️ Settings",
     pTitle: "💎 Premium", pSub: "The advanced ticket system and every Premium feature, in one monthly subscription.", pPlan: "Premium subscription", pPrice: "≈ ₪30", pMonth: "/ month",
