@@ -38,6 +38,7 @@ header.nav{position:sticky;top:12px;z-index:20;margin:12px auto 0;max-width:1120
 .btn:hover,button:hover{transform:translateY(-2px);border-color:var(--accent)}
 .btn.main{background:linear-gradient(135deg,var(--accent),var(--accent2));border:0;color:#fff;box-shadow:0 10px 30px #6c7bff55}.btn.main:hover{filter:brightness(1.1)}
 .btn.sm,button.sm{padding:7px 13px;font-size:14px;border-radius:11px}
+select.lang-sel{padding:7px 30px 7px 12px;font-size:14px;border-radius:11px;border:1px solid var(--line);background:var(--card);color:var(--text);max-height:260px;cursor:pointer;font-family:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .hero{text-align:center;padding:84px 0 56px;animation:rise .7s both}
 .badge{display:inline-block;padding:6px 16px;border-radius:99px;background:#6c7bff22;color:var(--accent);font-size:13.5px;font-weight:600;margin-bottom:20px;border:1px solid #6c7bff44}
@@ -85,7 +86,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:34px 0 50px}
       <a href="#features" data-i="nFeat"></a><a href="#preview" data-i="nPrev"></a><a href="#commands" data-i="nCmd"></a><a href="#premium" data-i="nPrem"></a><a href="#start" data-i="nStart"></a>
     </nav>
     <div class="acts">
-      <button class="sm" id="bl" aria-label="Language">EN</button>
+      <select class="sm lang-sel" id="bl" aria-label="Language"><option value="he">עברית</option><option value="en">English</option><option value="ar">العربية</option><option value="ru">Русский</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="pt">Português</option><option value="tr">Türkçe</option><option value="it">Italiano</option><option value="pl">Polski</option><option value="uk">Українська</option><option value="id">Bahasa Indonesia</option><option value="hi">हिन्दी</option></select>
       <button class="sm" id="bt" aria-label="Theme">🌓</button>
       <a class="btn sm dash" href="#" data-panel data-i="nPanel"></a>
       <a class="btn main sm" href="#" data-invite data-i="nAdd"></a>
@@ -130,7 +131,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:34px 0 50px}
     <div class="grid">
       <figure class="card glass"><img src="screenshots/panel-overview.png" alt="" loading="lazy" width="1280" height="800" style="width:100%;height:auto;border-radius:12px"><figcaption data-i="pr1"></figcaption></figure>
       <figure class="card glass"><img src="screenshots/panel-automod.png" alt="" loading="lazy" width="1280" height="800" style="width:100%;height:auto;border-radius:12px"><figcaption data-i="pr2"></figcaption></figure>
-      <figure class="card glass"><img src="screenshots/panel-tickets.png" alt="" loading="lazy" width="1280" height="800" style="width:100%;height:auto;border-radius:12px"><figcaption data-i="pr3"></figcaption></figure>
+      <figure class="card glass"><img src="screenshots/panel-antinuke.png" alt="" loading="lazy" width="1280" height="800" style="width:100%;height:auto;border-radius:12px"><figcaption data-i="pr3"></figcaption></figure>
     </div>
     <div class="cta" style="margin-top:24px"><a class="btn" href="demo/" data-i="prDemo"></a><a class="btn" href="#" data-panel data-i="prBtn"></a></div>
   </section>
