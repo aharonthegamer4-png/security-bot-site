@@ -77,7 +77,7 @@ const I18N = {
   }
 };
 const store = {get: k => { try { return localStorage.getItem(k); } catch { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch {} }};
-const LANGS = {he: "rtl", en: "ltr", ar: "rtl", ru: "ltr", es: "ltr", fr: "ltr", de: "ltr", pt: "ltr", tr: "ltr", it: "ltr", pl: "ltr", uk: "ltr", id: "ltr", hi: "ltr"};
+const LANGS = {he: "rtl", en: "ltr", ru: "ltr", es: "ltr", fr: "ltr", de: "ltr", pt: "ltr", tr: "ltr", it: "ltr", pl: "ltr", uk: "ltr", id: "ltr", hi: "ltr"};
 // שפות בלי תרגום מלא מוצגות באנגלית (fallback) עד שיתווספו להן טקסטים ב-I18N
 let lang = store.get("sg_lang") || ((navigator.language || "he").toLowerCase().startsWith("he") ? "he" : "en");
 if (!LANGS[lang]) lang = "he";
