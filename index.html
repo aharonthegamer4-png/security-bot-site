@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ctext y=%2726%27 font-size=%2726%27%3E%F0%9F%9B%A1%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="/img/favicon.png"><link rel="apple-touch-icon" href="/img/security-bot-logo.gif">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark light">
 <title>Security Bot - בוט אבטחה לדיסקורד</title>
@@ -31,7 +31,7 @@ a{color:inherit;text-decoration:none}
 header.nav{position:sticky;top:12px;z-index:20;margin:12px auto 0;max-width:1120px;padding:0 20px}
 .navin{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:var(--navbg);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 10px 30px var(--shadow)}
 .logo{font-weight:800;font-size:19px;display:flex;align-items:center;gap:10px;white-space:nowrap}
-.logo i{width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-style:normal;box-shadow:0 0 24px #6c7bff77}
+.logo i{overflow:hidden;width:36px;height:36px;border-radius:11px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-style:normal;box-shadow:0 0 24px #6c7bff77}
 .links{display:flex;gap:4px}.links a{padding:6px 12px;border-radius:10px;color:var(--muted);font-weight:600;font-size:14.5px}.links a:hover{color:var(--text);background:var(--g2)}
 .acts{display:flex;gap:8px;align-items:center}
 .btn,button{font:inherit;color:inherit;cursor:pointer;display:inline-block;padding:11px 24px;border-radius:13px;font-weight:700;border:1px solid var(--line);background:var(--g2);transition:.2s;white-space:nowrap}
@@ -92,13 +92,17 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:34px 0 50px}
 .cgrow .btn{flex:1;justify-content:center}
 .pmlist{text-align:start;margin:0 0 14px;padding-inline-start:20px;color:var(--muted,#9aa3b2);line-height:1.7}
 .pmlist li{margin:6px 0}
+.logo i img{width:100%;height:100%;display:block;border-radius:11px}
+.hero-gif{display:block;width:100%;max-width:640px;height:auto;margin:30px auto 0;border-radius:18px;border:1px solid var(--line);box-shadow:0 24px 70px #6a4dff33}
+.cgico img{width:64px;height:64px;border-radius:18px;display:block;margin:0 auto}
+.ic img{width:40px;height:40px;border-radius:12px;display:block}
 </style>
 </head>
 <body>
 <div class="aurora"><i></i><i></i><i></i></div>
 <header class="nav">
   <div class="navin">
-    <a class="logo" href="#top"><i>🛡️</i><span>Security Bot</span></a>
+    <a class="logo" href="#top"><i><img src="/img/security-bot-logo.gif" alt="" width="36" height="36"></i><span>Security Bot</span></a>
     <nav class="links" aria-label="Main">
       <a href="#features" data-i="nFeat"></a><a href="#preview" data-i="nPrev"></a><a href="#commands" data-i="nCmd"></a><a href="#premium" data-i="nPrem"></a><a href="#start" data-i="nStart"></a>
     </nav>
@@ -121,6 +125,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:34px 0 50px}
       <a class="btn" href="#premium" data-i="ctaPrem"></a>
       <a class="btn" href="#commands" data-i="ctaCmd"></a>
     </div>
+    <img class="hero-gif" src="img/security-bot.gif" alt="Security Bot blocking a scam link, a mass-ban attempt and verifying a new member" width="640" height="360">
     <div class="stats">
       <div class="stat glass"><b>10+</b><small data-i="st1"></small></div>
       <div class="stat glass"><b>60+</b><small data-i="st2"></small></div>
@@ -131,7 +136,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:34px 0 50px}
   <section id="features">
     <h2 data-i="fTitle"></h2><p class="sub" data-i="fSub"></p>
     <div class="grid">
-      <div class="card glass"><div class="ic">🛡️</div><h3 data-i="f1t"></h3><p data-i="f1p"></p></div>
+      <div class="card glass"><div class="ic"><img src="/img/security-bot-logo.gif" alt="" width="40" height="40"></div><h3 data-i="f1t"></h3><p data-i="f1p"></p></div>
       <div class="card glass"><div class="ic">🚨</div><h3 data-i="f2t"></h3><p data-i="f2p"></p></div>
       <div class="card glass"><div class="ic">🚪</div><h3 data-i="f3t"></h3><p data-i="f3p"></p></div>
       <div class="card glass"><div class="ic">🔒</div><h3 data-i="f4t"></h3><p data-i="f4p"></p></div>
@@ -204,7 +209,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;padding:34px 0 50px}
 
 <div id="consent" class="cgate" hidden role="dialog" aria-modal="true" aria-labelledby="cgTitle">
   <div class="cgbox glass">
-    <div class="cgico">🛡️</div>
+    <div class="cgico"><img src="/img/security-bot-logo.gif" alt="" width="64" height="64"></div>
     <h2 id="cgTitle" data-i="cgTitle"></h2>
     <p data-i="cgBody"></p>
     <div class="cglinks">
