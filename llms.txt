@@ -11,6 +11,7 @@
 ## Legal and contact
 - [Terms of use](https://shield-guard-ac.vercel.app/hub/terms/)
 - [Privacy policy](https://shield-guard-ac.vercel.app/hub/privacy/)
+- [Source overview on GitHub](https://github.com/aharonthegamer4-png/Shield-Guard)
 - [Discord community and support](https://discord.gg/YjHkkwr5dD)
 
 ## Notes
