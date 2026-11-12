@@ -1,0 +1,18 @@
+# Shield Guard
+
+> Shield Guard is a family of security projects by Aharon the gamer (Israel): Shield GuardAC (a FiveM anti-cheat), Security Bot (a Discord security bot) and Shield Guard Web (free online security tools). Written in Hebrew and English.
+
+## Projects
+- [Shield GuardAC](https://shield-guard-ac.vercel.app/): anti-cheat for FiveM servers with a live admin panel, remote settings, hardware-based bans, a real-time detection log, and selectable in-game language.
+- [Security Bot](https://security-bot-site.vercel.app/): a Discord security bot with anti-nuke, anti-raid, entry gate, quarantine, automod, verification, welcome messages and moderation.
+- [Shield Guard Web (Hub)](https://shield-guard-ac.vercel.app/hub/): free tools, no sign-up: file scanner, link check, scam-message check, FiveM resource scanner, game-mod scanner, image/video/QR check, website check, mail headers check, email leak check, password check, password generator, and an encrypted vault that runs in the browser.
+- [Link Scan browser extension](https://shield-guard-ac.vercel.app/hub/#ext): warns locally before opening look-alike or scam-style links, and scans a link on right-click.
+
+## Legal and contact
+- [Terms of use](https://shield-guard-ac.vercel.app/hub/terms/)
+- [Privacy policy](https://shield-guard-ac.vercel.app/hub/privacy/)
+- [Discord community and support](https://discord.gg/YjHkkwr5dD)
+
+## Notes
+- Shield Guard Web is not an antivirus: no findings does not mean a file is safe.
+- Files and text checked on Shield Guard Web are analysed in memory and not stored.
